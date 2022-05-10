@@ -1,43 +1,59 @@
-site_name: My Docs
+site_name: Experimental website used for learning only
 theme:
   name: material
-  palette:
-    - scheme: default
-      # scheme: preference #dark theme
-      primary: indigo
-      accent: indigo
-  font:
-    text: Noto Sans JP
-    code: Roboto Mono
-#   language: en
-  language: ja
-#   logo: img/logo.png
-#   favicon: img/favicon.png
   features:
     - navigation.instant
-
-# repo_url: https://the.repo.url
-# repo_name: user_name/repo_name
-
-extra_css:
-    - stylesheets/extra.css
-
-extra_javascript:
-  - javascripts/config.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - content.code.annotate
+  icon:
+    admonition:
+      note: octicons/tag-16
+      abstract: octicons/checklist-16
+      info: octicons/info-16
+      tip: octicons/squirrel-16
+      success: octicons/check-16
+      question: octicons/question-16
+      warning: octicons/alert-16
+      failure: octicons/x-circle-16
+      danger: octicons/zap-16
+      bug: octicons/bug-16
+      example: octicons/beaker-16
+      quote: octicons/quote-16
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
 markdown_extensions:
-  - pymdownx.arithmatex:
-      generic: true
-  - toc:
-      permalink: true
-  - pymdownx.highlight:
-      linenums: true
-      linenums_style: pymdownx.inline
-  - pymdownx.superfences
-  - pymdownx.keys
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      base_path: "./docs"
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: false
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
-  - attr_list
+  - toc:
+      permalink: true
